@@ -1,13 +1,12 @@
 
 import './App.css'
+import DataNavigation from "./components/DataNavigation"
 
 function App() {
 
   return (
     <>
-      <div>
-        <h1>HELLO</h1>
-      </div>
+      <DataNavigation />
     </>
   )
 }
