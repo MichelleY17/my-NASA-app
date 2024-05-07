@@ -3,7 +3,7 @@ const DataNavigation = () =>{
     return(
         <div className='date-navigation'>
         <button>prev</button>
-        <span>{currentDate.toString}</span>
+        <span>{currentDate.toString()}</span>
         <button>next</button>
       </div> 
     )
