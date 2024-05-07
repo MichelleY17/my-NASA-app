@@ -3,7 +3,12 @@ const DataNavigation = () =>{
     return(
         <div className='date-navigation'>
         <button>prev</button>
-        <span>{currentDate.toString()}</span>
+        <span>{currentDate.toLocaleDateString("it-IT",{
+            weekday: "short",
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+        })}</span>
         <button>next</button>
       </div> 
     )
