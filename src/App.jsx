@@ -65,11 +65,13 @@ function App() {
                 </motion.div>
               </motion.div>
             ) : (
+              <div className="content-container">
               <>
               <h2>{data.title}</h2>
               <img src={data.hdurl} alt={data.title} />
               <p>{data.explanation}</p>
-              </> 
+              </>
+            </div> 
             )}
           </AnimatePresence>
         </div>
