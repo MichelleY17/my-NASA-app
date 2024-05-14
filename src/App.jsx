@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { BiLoader } from "react-icons/bi";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import "./App.css";
 import DateNavigation from "./components/DateNavigation";
 
@@ -38,24 +38,33 @@ function App() {
     <>
       <DateNavigation setCurrentDate={setCurrentDate} />
       <div>
-        {isLoading ? (
-          <div className="loader-container">
+        <AnimatePresence>
+          {isLoading ? (
             <motion.div
-              animate={{ rotate: 360 }}
-              transition={{
-                duration: 1,
-                repeat: Infinity,
-                type: "tween",
-                ease: "linear",
-              }}
-              className="loader-wrapper"
+              key={isLoading}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="loader-container"
             >
-              <BiLoader size={30} />
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  type: "tween",
+                  ease: "linear",
+                }}
+                className="loader-wrapper"
+              >
+                <BiLoader size={30} />
+              </motion.div>
             </motion.div>
-          </div>
-        ) : (
-          <h2>{data.title}</h2>
-        )}
+          ) : (
+            <h2>{data.title}</h2>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );
