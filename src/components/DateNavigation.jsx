@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
-const DateNavigation = () => {
+const DateNavigation = ({setCurrentDate}) => {
   const [date, setDate] = useState(new Date());
   const [formattedDate, setFormattedDate] = useState("");
 
@@ -13,19 +14,20 @@ const DateNavigation = () => {
   useEffect(() => {
     setFormattedDate(
       date.toLocaleDateString("it-IT", {
-        weekday: "long",
+        weekday: "short",
         year: "numeric",
         month: "long",
         day: "numeric",
       })
     );
+    setCurrentDate(date);
   }, [date]);
 
   return (
     <div className="date-navigation">
-      <button onClick={() => handleDate(-1)}>prev</button>
+      <button  className="btn-left" onClick={() => handleDate(-1)}> <FaArrowLeft /></button>
       <span>{formattedDate}</span>
-      <button onClick={() => handleDate(1)}>next</button>
+      <button className="btn-right" onClick={() => handleDate(1)}> <FaArrowRight /></button>
     </div>
   );
 };
