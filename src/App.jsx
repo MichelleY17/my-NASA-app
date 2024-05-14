@@ -39,7 +39,7 @@ function App() {
       <DateNavigation setCurrentDate={setCurrentDate}/>
       <div>
         {isLoading ? (
-          <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, loop: Infinity }}>
+          <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity }}>
             <BiLoader size={30} />
           </motion.div>
         ) : (
