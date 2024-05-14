@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { BiLoader } from 'react-icons/bi';
-import { motion } from "framer-motion";
+import { BiLoader } from "react-icons/bi";
+import { motion, AnimatePresence } from "framer-motion";
 import "./App.css";
 import DateNavigation from "./components/DateNavigation";
 
@@ -36,10 +36,10 @@ function App() {
 
   return (
     <>
-      <DateNavigation setCurrentDate={setCurrentDate}/>
+      <DateNavigation setCurrentDate={setCurrentDate} />
       <div>
         {isLoading ? (
-          <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity }}>
+          <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, loop: Infinity }}>
             <BiLoader size={30} />
           </motion.div>
         ) : (
