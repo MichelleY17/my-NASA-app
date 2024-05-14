@@ -38,13 +38,33 @@ function App() {
     <>
       <DateNavigation setCurrentDate={setCurrentDate} />
       <div>
-        {isLoading ? (
-          <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, loop: Infinity }}>
-            <BiLoader size={30} />
-          </motion.div>
-        ) : (
-          <h2>{data.title}</h2>
-        )}
+        <AnimatePresence>
+          {isLoading ? (
+            <motion.div
+              key={isLoading}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="loader-container"
+            >
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  type: "tween",
+                  ease: "linear",
+                }}
+                className="loader-wrapper"
+              >
+                <BiLoader size={30} />
+              </motion.div>
+            </motion.div>
+          ) : (
+            <h2>{data.title}</h2>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );
