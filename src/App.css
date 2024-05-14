@@ -1,6 +1,8 @@
-body{
+.test{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 .date-navigation {
   display: flex;
@@ -22,9 +24,9 @@ body{
   font-size: 20px;
   font-weight: 800;
   color: #f6c638;
-  padding: 0.7rem;
+
+  padding: 0.8rem 0.7rem 0.7rem;
   border-radius: 15px;
-  box-decoration-break: 07rem #000;
 }
 .btn-right:hover{
     background:  #f6c638;

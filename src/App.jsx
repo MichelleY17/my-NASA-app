@@ -3,6 +3,8 @@ import { BiLoader } from "react-icons/bi";
 import { motion, AnimatePresence } from "framer-motion";
 import "./App.css";
 import DateNavigation from "./components/DateNavigation";
+// import { Menu } from "antd";
+
 
 function App() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -35,38 +37,44 @@ function App() {
   }, [currentDate]);
 
   return (
-    <>
-      <DateNavigation setCurrentDate={setCurrentDate} />
-      <div>
-        <AnimatePresence>
-          {isLoading ? (
-            <motion.div
-              key={isLoading}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="loader-container"
-            >
+    <div className="test">
+      <>
+        <DateNavigation setCurrentDate={setCurrentDate} />
+        <div>
+          <AnimatePresence>
+            {isLoading ? (
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  type: "tween",
-                  ease: "linear",
-                }}
-                className="loader-wrapper"
+                key={isLoading}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="loader-container"
               >
-                <BiLoader size={30} />
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 1,
+                    repeat: Infinity,
+                    type: "tween",
+                    ease: "linear",
+                  }}
+                  className="loader-wrapper"
+                >
+                  <BiLoader size={30} />
+                </motion.div>
               </motion.div>
-            </motion.div>
-          ) : (
-            <h2>{data.title}</h2>
-          )}
-        </AnimatePresence>
-      </div>
-    </>
+            ) : (
+              <>
+              <h2>{data.title}</h2>
+              <img src={data.hdurl} alt={data.title} />
+              <p>{data.explanation}</p>
+              </> 
+            )}
+          </AnimatePresence>
+        </div>
+      </>
+    </div>
   );
 }
 
